@@ -1,0 +1,15 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+.heading{
+  text-align: center;
+  display: flex;
+  height: 100px;
+  background-color: black;
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+.heading h1{}
