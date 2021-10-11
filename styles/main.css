@@ -2,6 +2,9 @@
   padding: 0;
   margin: 0;
 }
+body{
+  background-image: url('/bg.jpg');
+}
 
 .heading{
   text-align: center;
@@ -12,4 +15,34 @@
   align-items: center;
   justify-content: center;
 }
-.heading h1{}
+.startgame{
+  align-items: center;
+  margin-left: 46%;
+  margin-top: 50px;
+}
+.startgame button{
+  background-color: aqua;
+  border: none;
+  border-radius: 2px;
+  height: 35px;
+  width: 100px;
+  color: white;
+  font-weight: 600;
+}
+
+.score-table{
+  height: 300px;
+  width: 300px;
+  margin-left: 41%;
+  margin-top: 10%;  
+
+}
+#entries{
+  border-collapse: collapse;
+  text-align: center;
+  display: none;
+}
+#entries th, #entries td{
+  height: 35px;
+  width: 80px;
+} 

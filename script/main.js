@@ -1,10 +1,12 @@
 let play=0, pc=0;
+let sta;
 
 function computer(){
   let a = ["rock", "paper", "scissor"];
   let i = (Math.floor(Math.random()*10)%3);
   return a[i];
 }
+
 function player(){
   let mySelection = prompt("Please enter your option: ");
   mySelection = mySelection.toLowerCase();
@@ -13,37 +15,37 @@ function player(){
 
 function round(a, b){
   if(a==b){
-    console.log("It's a Tie");
+    sta = "It's a tie";
     play++;
     pc++;
   }
   else if(a=="rock"){
     if(b=="paper"){
-      console.log("You lose! Paper beats Rock");
+      sta = "You Lose";
       pc++;
     }
     else{
-      console.log("You won! Rock beats Scissor");
+      sta = "You Won";
       play++;
     }
   }
   else if(a=="paper"){
     if(b=="rock"){
-      console.log("You Won! Paper beats Rock");
+      sta = "You Won";
       play++;
     }
     else{
-      console.log("You lose! Scissor beats Paper");
+      sta = "You Lose";
       pc++;
     }
   }
   else{
     if(b=="paper"){
-      console.log("You Won! Scissor beats Paper");
+      sta = "You Won";
       play++;
     }
     else{
-      console.log("You Lose! Rock beats Scissor");
+      sta = "You Lose";
       pc++;
     }
   }
@@ -53,25 +55,53 @@ function round(a, b){
 function game(){
   play=0;
   pc = 0;
+
+  let table = document.getElementById("entries");
+  table.style.display = "block";
+  table.style.backgroundColor = "white";
+
   for(let i=0;i<5;i++){
-    round(player(), computer());
+    var row = table.insertRow(-1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+
+    setTimeout(round(player(), computer()), 1);
+
+    cell1.innerHTML = i+1;
+    cell2.innerHTML = sta;
+    cell3.innerHTML = play;
+    cell4.innerHTML = pc;
   }
+
+
+  let result;
+
+
   if(play==pc){
-    console.log("It's a tie");
+    result="Tie";
   }
   else if(play<pc){
-    console.log("You Lose! Better luck next time");
+    result = "You Lose"
   }
   else{
-    console.log("You Won, Congrats!");
+    result = "You Won"
   }
   let again = prompt("Wanna play again");
   if(again=="yes"){
     game();
   }
   else{
-    
   }
-}
 
-// game();  
+  var row = table.insertRow(-1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  cell1.innerHTML = "Final";
+  cell2.innerHTML = result;
+  cell3.innerHTML = "-";
+  cell4.innerHTML = "-";
+}
